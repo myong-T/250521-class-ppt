@@ -1,0 +1,321 @@
+body {
+    font-family: 'Malgun Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.slide-container {
+    width: 90%;
+    max-width: 800px;
+    height: 550px; /* Fixed height for consistency */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex; /* For vertical centering of slide-content */
+    flex-direction: column;
+    justify-content: center; /* Vertical centering */
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+.slide-content {
+    text-align: center;
+    padding: 10px;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    max-height: 100%;
+}
+.slide-content.centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.slide h1 {
+    color: #333;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+.slide h2 {
+    color: #555;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0c040;
+    padding-bottom: 10px;
+}
+.subtitle {
+    font-size: 1.2em;
+    color: #666;
+}
+.small-text {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.navigation {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.navigation button {
+    background-color: #f0c040;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.navigation button:hover {
+    background-color: #e0b030;
+}
+#slide-number {
+    font-size: 1em;
+    color: #333;
+    margin: 0 10px;
+}
+
+/* Character Dialogue Styles */
+.character-dialogue {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items to the top */
+    margin-top: 20px;
+    width: 100%;
+}
+.character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%; /* Adjust width as needed */
+}
+.character img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+    border: 2px solid #ddd;
+}
+.character p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.speech-bubble {
+    background-color: #e9f5fd;
+    padding: 10px 15px;
+    border-radius: 10px;
+    position: relative;
+    max-width: 90%;
+    text-align: left;
+    font-size: 0.9em;
+    word-wrap: break-word;
+}
+.speech-bubble.left::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: 15px;
+    border-width: 10px 10px 10px 0;
+    border-style: solid;
+    border-color: transparent #e9f5fd transparent transparent;
+}
+.speech-bubble.right::before {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 15px;
+    border-width: 10px 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #e9f5fd;
+}
+.pmi-definition {
+    margin-top: 20px;
+    background-color: #fffbe6;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #f0c040;
+}
+.pmi-definition p {
+    margin: 5px 0;
+}
+
+/* PMI Components Visualization & Explanation */
+#pmi-components-visualization {
+    margin-bottom: 20px;
+    min-height: 150px; /* Space for D3 circles */
+}
+.pmi-explanation-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    min-height: 80px;
+    text-align: left;
+}
+.pmi-explanation-box strong {
+    color: #d9534f; /* Example color */
+}
+
+/* Two Column Layout */
+.two-column-layout {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+.column {
+    width: 45%;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.column h3 {
+    font-size: 1.2em;
+    color: #337ab7;
+    margin-bottom: 10px;
+}
+
+/* PMI Table Styles */
+.pmi-table-container {
+    margin-top: 20px;
+    width: 100%;
+}
+.pmi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+.pmi-table th, .pmi-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+.pmi-table th {
+    background-color: #f0c040;
+    color: white;
+    font-weight: bold;
+}
+.pmi-table td.hidden-cell {
+    visibility: hidden;
+}
+.reveal-btn {
+    font-size: 0.8em;
+    padding: 3px 6px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+.reveal-btn:hover {
+    background-color: #4cae4c;
+}
+
+/* Idea Generation Slide */
+.idea-generation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+.idea-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(50% - 20px); /* Two items per row with gap */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: opacity 0.5s, transform 0.5s;
+}
+.idea-item.hidden-idea {
+    opacity: 0;
+    transform: translateY(20px);
+}
+.idea-item img {
+    margin-bottom: 5px;
+}
+
+/* New Idea Box */
+.new-idea-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e7f3fe;
+    border-left: 5px solid #337ab7;
+    font-size: 1em;
+}
+.hidden-text {
+    display: none;
+}
+.reveal-btn-inline {
+    margin-left: 10px;
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+.key-takeaway {
+    margin-top: 20px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Challenge Form */
+.pmi-challenge-form {
+    width: 80%;
+    max-width: 500px;
+    margin: 20px auto;
+    text-align: left;
+}
+.pmi-challenge-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.pmi-challenge-form input[type="text"],
+.pmi-challenge-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+.pmi-challenge-form textarea {
+    resize: vertical;
+}
