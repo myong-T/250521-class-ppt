@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMI를 활용한 창의적 아이디어 발상</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active" id="slide1">
+            <div class="slide-content centered-content">
+                <h1>PMI를 활용한 창의적 아이디어 발상</h1>
+                <p class="subtitle">다른 시각, 다른 생각, 창의 아이디어 발상!</p>
+                <img src="https://i.imgur.com/9m7Ww2X.png" alt="Creative Idea Intro" style="width: 70%; max-width: 500px; margin-top: 20px;">
+            </div>
+        </div>
+
+        <!-- Slide 2: Pepero Day Problem -->
+        <div class="slide" id="slide2">
+            <div class="slide-content">
+                <h2>오늘의 주제는? <span class="small-text">(막대과자 데이의 고민)</span></h2>
+                <div class="character-dialogue">
+                    <div class="character mins">
+                        <img src="https://i.imgur.com/rGgGk9U.png" alt="Minsu">
+                        <p>민수</p>
+                        <div class="speech-bubble right">보라야, 다음 주가 막대과자 데이인데 나한테 막대과자 줄 거지?</div>
+                    </div>
+                    <div class="character bora">
+                        <img src="https://i.imgur.com/jS0i9oX.png" alt="Bora">
+                        <p>보라</p>
+                        <div class="speech-bubble left">난 막대과자 주고받는 것 별로야... 몸에 안 좋은 성분도 많다고 하고.</div>
+                    </div>
+                </div>
+                <div class="character-dialogue" style="margin-top: 20px;">
+                     <div class="character mins">
+                        <img src="https://i.imgur.com/rGgGk9U.png" alt="Minsu">
+                        <p>민수</p>
+                        <div class="speech-bubble right">어떻게 하면 '막대과자 데이'를 즐겁게 보낼 수 있을까?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: What is PMI? -->
+        <div class="slide" id="slide3">
+            <div class="slide-content centered-content">
+                <h2>PMI란 무엇일까요?</h2>
+                <div class="character-dialogue">
+                    <div class="character teacher">
+                        <img src="https://i.imgur.com/9B9Rj3b.png" alt="Teacher">
+                        <p>선생님</p>
+                        <div class="speech-bubble right">PMI를 통해 아이디어를 찾아볼까요?</div>
+                    </div>
+                     <div class="character bora">
+                        <img src="https://i.imgur.com/jS0i9oX.png" alt="Bora">
+                        <p>보라</p>
+                        <div class="speech-bubble left">PMI요?</div>
+                    </div>
+                </div>
+                <div class="pmi-definition">
+                    <p>PMI는 아이디어를 세 가지 각도에서 분석하여<br>개선하고 새로운 아이디어를 창출하는 방법입니다.</p>
+                    <p><strong>P</strong>lus (장점), <strong>M</strong>inus (단점), <strong>I</strong>nteresting (흥미로운 점)</p>
+                </div>
+                <img src="https://i.imgur.com/lXyZlqM.png" alt="Magnifying glass over PMI" style="width: 50%; max-width: 300px; margin-top: 20px;">
+            </div>
+        </div>
+
+        <!-- Slide 4: PMI Components -->
+        <div class="slide" id="slide4">
+            <div class="slide-content centered-content">
+                <h2>PMI의 구성 요소</h2>
+                <div id="pmi-components-visualization"></div>
+                <div class="pmi-explanation-box" id="pmi-explanation">
+                    여기를 클릭하여 설명을 보세요!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Why use PMI? -->
+        <div class="slide" id="slide5">
+            <div class="slide-content centered-content">
+                <h2>PMI는 왜 사용할까요?</h2>
+                <div class="two-column-layout">
+                    <div class="column">
+                        <h3><img src="https://i.imgur.com/cQ1xZ9j.png" alt="Value Check Icon" style="width:50px; vertical-align: middle;"> 아이디어 가치 검토</h3>
+                        <p>아이디어가 얼마나 가치 있는지, 실현 가능한지 다각도로 살펴볼 수 있습니다.</p>
+                    </div>
+                    <div class="column">
+                        <h3><img src="https://i.imgur.com/k1mRzL1.png" alt="New Idea Icon" style="width:50px; vertical-align: middle;"> 새로운 아이디어 창출</h3>
+                        <p>기존 아이디어의 단점을 보완하거나 흥미로운 점을 발전시켜 더 나은 아이디어를 만들 수 있습니다.</p>
+                    </div>
+                </div>
+                 <img src="https://i.imgur.com/D8Z6sJ7.png" alt="Brainstorming puzzle" style="width: 50%; max-width: 350px; margin-top: 30px;">
+            </div>
+        </div>
+
+        <!-- Slide 6: PMI Practice 1: Pepero Day -->
+        <div class="slide" id="slide6">
+            <div class="slide-content">
+                <h2>PMI 연습 1: 막대과자 데이</h2>
+                <div class="pmi-table-container">
+                    <table class="pmi-table">
+                        <thead>
+                            <tr>
+                                <th>P (장점) <button class="reveal-btn" data-column="p" data-table="pepero">보이기</button></th>
+                                <th>M (단점) <button class="reveal-btn" data-column="m" data-table="pepero">보이기</button></th>
+                                <th>I (흥미로운 점) <button class="reveal-btn" data-column="i" data-table="pepero">보이기</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-pepero hidden-cell">맛있는 과자를 먹을 수 있다.</td>
+                                <td class="m-pepero hidden-cell">돈을 너무 많이 쓰게 된다.</td>
+                                <td class="i-pepero hidden-cell">'가래떡 데이'와 같은 날이다.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-pepero hidden-cell">친구들과 친해지는 계기가 된다.</td>
+                                <td class="m-pepero hidden-cell">못 받는 친구들은 소외감을 느낀다.</td>
+                                <td class="i-pepero hidden-cell">친구들이 스스로 참여하는 날이다.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-pepero hidden-cell">특별한 이벤트를 할 수 있는 날이다.</td>
+                                <td class="m-pepero hidden-cell">쓰레기가 너무 많이 나온다.</td>
+                                <td class="i-pepero hidden-cell"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Pepero Day Idea Generation -->
+        <div class="slide" id="slide7">
+            <div class="slide-content">
+                <h2>막대과자 데이: 새로운 아이디어!</h2>
+                <div class="idea-generation">
+                    <div class="idea-item hidden-idea">
+                        <img src="https://i.imgur.com/j8o87t1.png" alt="Heart Cookie" style="width:100px;">
+                        <p><strong>P 요인 활용:</strong> 하트 모양 과자에 초코펜으로 이름 작성 (친밀감 UP!)</p>
+                    </div>
+                    <div class="idea-item hidden-idea">
+                        <img src="https://i.imgur.com/jWjY8jK.png" alt="Letter Stick" style="width:100px;">
+                        <p><strong>M 요인 (돈 문제) 개선:</strong> 막대 모양 편지 써주기</p>
+                    </div>
+                     <div class="idea-item hidden-idea">
+                        <img src="https://i.imgur.com/5S8w6qF.png" alt="Bazaar" style="width:100px;">
+                        <p><strong>M 요인 (소외감) 개선:</strong> 바자회 열고 수익금으로 다 같이 나눠 먹기</p>
+                    </div>
+                    <div class="idea-item hidden-idea">
+                        <img src="https://i.imgur.com/z0pM2zW.png" alt="Eco Packaging" style="width:100px;">
+                        <p><strong>M 요인 (쓰레기) 개선:</strong> 큰 과자 하나 + 재활용 포장</p>
+                    </div>
+                    <div class="idea-item hidden-idea">
+                        <img src="https://i.imgur.com/3iY7i0L.png" alt="Pepero Garaetteok" style="width:100px;">
+                        <p><strong>I 요인 (가래떡 데이) 활용:</strong> 막대과자 + 가래떡 세트</p>
+                    </div>
+                     <div class="idea-item hidden-idea">
+                        <img src="https://i.imgur.com/hO9xG2T.png" alt="Sports Day" style
+                        ="width:100px;">
+                        <p><strong>I 요인 (학생 참여) 활용:</strong> 막대과자 운동회 (어른들도 참여!)</p>
+                    </div>
+                </div>
+                <button id="revealPeperoIdeas" style="margin-top:20px; padding: 10px 15px; font-size: 1em;">아이디어 보기</button>
+            </div>
+        </div>
+
+
+        <!-- Slide 8: PMI Practice 2: Outdoor Cup -->
+        <div class="slide" id="slide8">
+            <div class="slide-content">
+                <h2>PMI 연습 2: 야외용 컵 (스테인리스)</h2>
+                <div class="pmi-table-container">
+                    <table class="pmi-table">
+                        <thead>
+                            <tr>
+                                <th>P (장점)</th>
+                                <th>M (단점)</th>
+                                  <th>I (흥미로운 점)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>단단하다. 깨지지 않는다.</td>
+                                <td>가지고 다니기 불편하다. 손잡이가 없다.</td>
+                                <td>밖에서 쓰기 좋다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="new-idea-box">
+                    <strong>새로운 아이디어:</strong> <span class="hidden-text" id="cup-idea">단단해서 깨지지 않고, 밖에서 쓰기 좋다는 장점을 살리고, 휴대 불편 및 손잡이 없음이라는 단점을 개선하여, <strong>작게 접히고 손잡이에 고리가 달린 휴대용 스테인리스 컵</strong></span>
+                    <button class="reveal-btn-inline" data-target="cup-idea">아이디어 보기</button>
+                </div>
+                <img src="https://i.imgur.com/q5R1NlO.png" alt="Collapsible Cup" style="width: 30%; max-width: 200px; margin-top: 15px;">
+            </div>
+        </div>
+        
+        <!-- Slide 9: PMI Practice 3: School Desk -->
+        <div class="slide" id="slide9">
+            <div class="slide-content">
+                <h2>PMI 연습 3: 학교 책상</h2>
+                <div class="pmi-table-container">
+                     <table class="pmi-table">
+                        <thead>
+                            <tr>
+                                <th>P (장점)</th>
+                                <th>M (단점)</th>
+                                <th>I (흥미로운 점)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>공부하기 편하다.</td>
+                                <td>모서리가 뾰족해서 다칠 수 있다.</td>
+                                <td>학교에서 쓰는 물건이다.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="new-idea-box">
+                    <strong>새로운 아이디어:</strong> <span class="hidden-text" id="desk-idea">모서리가 뾰족해 다칠 수 있는 단점을 개선하여, <strong>모서리가 둥글고 주변에 안전 고무를 덧댄 책상</strong></span>
+                    <button class="reveal-btn-inline" data-target="desk-idea">아이디어 보기</button>
+                </div>
+                <img src="https://i.imgur.com/G2U3c5P.png" alt="Safe Desk" style="width: 40%; max-width: 250px; margin-top: 15px;">
+            </div>
+        </div>
+
+        <!-- Slide 10: PMI Summary -->
+        <div class="slide" id="slide10">
+            <div class="slide-content centered-content">
+                <h2>PMI 정리</h2>
+                <p><strong>P (Plus):</strong> 아이디어의 좋은 점</p>
+                <p><strong>M (Minus):</strong> 아이디어의 나쁜 점</p>
+                <p><strong>I (Interesting):</strong> 아이디어의 흥미로운 점</p>
+                <hr>
+                <p><strong>PMI 활용:</strong> 아이디어 가치 검토, 새로운 아이디어 창출</p>
+                <p class="key-takeaway">PMI는 한쪽으로 치우치지 않고 균형 있게 생각하며,<br>기존 아이디어를 새롭게 바라볼 수 있게 도와줍니다!</p>
+                <img src="https://i.imgur.com/O9C9fXf.png" alt="Idea Bulb" style="width:30%; max-width: 150px; margin-top: 20px;">
+            </div>
+        </div>
+
+        <!-- Slide 11: Challenge: Your PMI -->
+        <div class="slide" id="slide11">
+            <div class="slide-content centered-content">
+                <h2>도전! 여러분의 PMI</h2>
+                <p>"그럼 여러분도 한번 도전해볼까요?"</p>
+                <div class="pmi-challenge-form">
+                    <label for="topicInput">주제:</label>
+                    <input type="text" id="topicInput" placeholder="여기에 주제를 입력하세요">
+                    
+                    <label for="pInput">P (장점):</label>
+                    <textarea id="pInput" rows="3" placeholder="장점을 적어보세요"></textarea>
+                    
+                    <label for="mInput">M (단점):</label>
+                    <textarea id="mInput" rows="3" placeholder="단점을 적어보세요"></textarea>
+                    
+                    <label for="iInput">I (흥미로운 점):</label>
+                    <textarea id="iInput" rows="3" placeholder="흥미로운 점을 적어보세요"></textarea>
+                    
+                    <label for="newIdeaInput">새로운 아이디어:</label>
+                    <textarea id="newIdeaInput" rows="3" placeholder="PMI를 바탕으로 새로운 아이디어를 만들어보세요!"></textarea>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9em;">일상 속 물건이나 상황을 주제로 PMI 분석을 해보고, 새로운 아이디어를 만들어보세요!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button id="prevBtn">이전</button>
+        <span id="slide-number">1 / 11</span>
+        <button id="nextBtn">다음</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
